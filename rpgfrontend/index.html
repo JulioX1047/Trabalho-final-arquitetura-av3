@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>RPG - Login</title>
+    <style>
+        body { font-family: Arial; background: #1a1a2e; color: #fff; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .container { background: #16213e; padding: 40px; border-radius: 10px; width: 350px; }
+        h1 { text-align: center; color: #e94560; }
+        input { width: 100%; padding: 10px; margin: 8px 0; border-radius: 5px; border: none; box-sizing: border-box; }
+        button { width: 100%; padding: 10px; margin: 5px 0; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; }
+        .btn-login { background: #e94560; color: white; }
+        .btn-cadastro { background: #0f3460; color: white; }
+        #mensagem { text-align: center; margin-top: 10px; color: #e94560; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>⚔️ RPG Battle</h1>
+        <input type="text" id="username" placeholder="Usuário" />
+        <input type="password" id="password" placeholder="Senha" />
+        <button class="btn-login" onclick="login()">Entrar</button>
+        <button class="btn-cadastro" onclick="cadastrar()">Cadastrar</button>
+        <p id="mensagem"></p>
+    </div>
+    <script src="auth.js"></script>
+</body>
+</html>

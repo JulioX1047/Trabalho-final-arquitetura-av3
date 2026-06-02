@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>RPG - Batalha</title>
+    <style>
+        body { font-family: Arial; background: #1a1a2e; color: #fff; margin: 0; padding: 20px; }
+        .container { max-width: 600px; margin: 0 auto; }
+        h1 { text-align: center; color: #e94560; }
+        button { padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; margin: 5px; }
+        .btn-iniciar { background: #e94560; color: white; width: 100%; }
+        .btn-fisico { background: #c0392b; color: white; }
+        .btn-magico { background: #8e44ad; color: white; }
+        .btn-furtivo { background: #27ae60; color: white; }
+        .btn-fugir { background: #7f8c8d; color: white; }
+        .btn-nova { background: #e94560; color: white; padding: 12px 30px; font-size: 16px; }
+        .btn-voltar { background: #0f3460; color: white; }
+        select { width: 100%; padding: 10px; margin: 8px 0; border-radius: 5px; border: none; }
+        .hp-bar { background: #333; border-radius: 5px; height: 20px; margin: 5px 0; }
+        .hp-fill { background: #e94560; height: 100%; border-radius: 5px; transition: width 0.3s; }
+        .batalha-info { background: #16213e; padding: 20px; border-radius: 10px; margin: 10px 0; }
+        #log { background: #0f3460; padding: 15px; border-radius: 8px; max-height: 200px; overflow-y: auto; margin-top: 10px; }
+        .log-item { padding: 5px 0; border-bottom: 1px solid #1a1a2e; font-size: 14px; }
+        #acoes { display: none; }
+        #resultado { display: none; text-align: center; padding: 20px; margin: 10px 0; border-radius: 10px; }
+        #resultado.vitoria { background: #1a472a; border: 2px solid #00ff00; }
+        #resultado.derrota { background: #4a1a1a; border: 2px solid #ff0000; }
+        #resultado.fuga { background: #2a2a1a; border: 2px solid #ffff00; }
+        .nav-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <div class="nav-bar">
+            <button class="btn-voltar" onclick="window.location.href='personagem.html'">
+                Voltar aos Personagens
+            </button>
+            <h1 style="margin:0;">Batalha</h1>
+            <div style="width:180px;"></div>
+        </div>
+
+        <div class="batalha-info">
+            <h3>Iniciar Batalha</h3>
+            <select id="tipoMonstro">
+                <option value="GOBLIN">Goblin (Facil)</option>
+                <option value="ORC">Orc (Medio)</option>
+                <option value="DRAGAO">Dragao (Dificil)</option>
+            </select>
+            <button class="btn-iniciar" onclick="iniciarBatalha()">Iniciar Batalha!</button>
+        </div>
+
+        <div id="acoes">
+            <div class="batalha-info">
+                <div style="display:flex; justify-content:space-between;">
+                    <div style="width:48%">
+                        <strong>Seu Personagem</strong>
+                        <div class="hp-bar"><div class="hp-fill" id="hp-bar-jogador" style="width:100%"></div></div>
+                        <span id="hp-jogador">HP: --</span>
+                    </div>
+                    <div style="width:48%">
+                        <strong>Inimigo</strong>
+                        <div class="hp-bar"><div class="hp-fill" id="hp-bar-inimigo" style="width:100%; background:#f39c12;"></div></div>
+                        <span id="hp-inimigo">HP: --</span>
+                    </div>
+                </div>
+            </div>
+
+            <div id="botoes-ataque" style="text-align:center;">
+                <button class="btn-fisico" onclick="atacar('FISICO')">Ataque Fisico</button>
+                <button class="btn-magico" onclick="atacar('MAGICO')">Ataque Magico</button>
+                <button class="btn-furtivo" onclick="atacar('FURTIVO')">Ataque Furtivo</button>
+                <button class="btn-fugir" onclick="fugir()">Fugir</button>
+            </div>
+
+            <div id="resultado">
+                <h2 id="resultado-texto"></h2>
+                <button class="btn-nova" onclick="novaBatalha()">Nova Batalha</button>
+                <button class="btn-voltar" onclick="window.location.href='personagem.html'">
+                    Trocar Personagem
+                </button>
+            </div>
+
+            <div id="log"><p>Log de batalha:</p></div>
+        </div>
+    </div>
+    <script src="batalha.js"></script>
+</body>
+</html>
